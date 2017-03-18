@@ -1,1 +1,9 @@
 <%= render 'stocks/lookup' %>
+
+
+<h3>My stocks</h3>
+<% if @stocks %>
+    <div id="stock-list">
+        <%= render 'users/stocks' %>
+    </div>
+<% end %>
