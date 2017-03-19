@@ -1,0 +1,24 @@
+<%= render 'friends/lookup' %>
+
+<div class="col-md-12">
+    <h3>My friends</h3>
+    <% if @friendships.size > 0 %>
+        <% @friendships.each do |friend| %>
+            <div class="well results-block col-md-8">
+              <strong>Name:</strong> <%= friend.full_name %>
+              <strong>Email:</strong> <%= friend.email %>
+              <small>
+                  <%= link_to "View Profile", user_path(friend), class: "btn btn-primary btn-xs" %>
+                  <%= button_tag(type: :button, class: "close") do %>
+                      <span aria-hidden="true"><%= link_to 'x', friendship_path(friend), method: :delete,
+                      remote: true, data: { :confirm => "Are you sure?"} %></span>
+                  <% end %>
+              </small>
+            </div>
+        <% end %>
+    <% else %>
+        <div class="row col-lg-12">
+            <p class="lead">You don't have any friends yet</p>
+        </div>
+    <% end %>
+</div>
